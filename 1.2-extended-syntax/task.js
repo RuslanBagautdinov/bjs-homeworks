@@ -1,4 +1,4 @@
-
+"use strict"
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -10,9 +10,16 @@ function calculateQuadraticEquation(){
     span.textContent = "х = "+result;
 }
 
-function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+function getResult(a,b,c) {
+    let discriminant = Math.pow(b, 2) - 4 * a * c;
+    let x = [];
+    if (discriminant === 0) {
+        x.push(- b / (2 * a));
+    } else if (discriminant > 0) {
+        x.push((-b + Math.sqrt(discriminant)) / (2 * a));
+        x.push((-b - Math.sqrt(discriminant)) / (2 * a));
+    } 
+    return x;
 }
 
 function calculateAverageRating(){
@@ -22,8 +29,17 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    // код для задачи №2 писать здесь
-    //return averageMark;
+    if (marks.length > 5) {
+    console.log(`Оценок по предметам больше 5.`);
+    marks.splice(5);
+    }
+  
+    let sum = 0;
+    for (let i = 0; i < marks.length; i++) {
+    sum += marks[i];
+    }
+  
+    return (sum / marks.length).toFixed(2);
 }
 
 function calculateDrinkTask(){
@@ -34,7 +50,13 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-    // код для задачи №3 писать здесь
-    //console.log(result)
-    //return result;
+    let result = "";
+    let old = new Date().getFullYear() - dateOfBirthday.getFullYear();
+    if (old < 18) {
+        result = `Сожалею, ${name}, но я не могу вам продать алкоголь. \nЗато могу предложить вам замечательный клюквенный компот!`;
+    } else {
+        result = `Не желаете ли олд-фэшн, ${name}?`;
+    }
+
+    return result;
 }
