@@ -64,4 +64,46 @@ console.log(getAverageScore({
 	english: [1, 1],
 }));
 
+//task 3 ======================================================================
+function getPersonData(secretData) {
+        
+        for (let secret in secretData) {
+                secretData.firstName = secretData.aaa;
+                secretData.lastName = secretData.bbb;
+        }
+        let realName = getDecodedValue(secretData.secret);
+        secretData.aaa = realName;
+        secretData.bbb = realName;
+        
+                function getDecodedValue(secret) {
+                        let realName;
+                        if (secret == 0) {
+                                realName = "Rodrigo";
+                        } else {
+                                realName = "Emilio";
+                        }
+                        return realName;
+                }
+        return secretData;        
+        }        
 
+
+console.log(getPersonData({
+        aaa: 0,
+        bbb: 0,
+}));
+
+console.log(getPersonData({
+        aaa: 1,
+        bbb: 0,
+}));
+
+console.log(getPersonData({
+        aaa: 0,
+        bbb: 1,
+}));
+
+console.log(getPersonData({
+        aaa: 1,
+        bbb: 1,
+}));
